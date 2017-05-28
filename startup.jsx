@@ -3,12 +3,11 @@ import React, { Component } from 'react';
 import { IndexRoute, Route, Link, browserHistory } from 'react-router';
 import { ReactRouterSSR } from 'meteor/reactrouter:react-router-ssr';
 import App from './both/scenes/app';
-import Home from './both/scenes/home';
-import Another from './both/scenes/another';
-import Category from './both/scenes/category';
-import Product from './both/scenes/product';
-import Notification from './both/scenes/notification';
-import Transaction from './both/scenes/transaction';
+import Home from './both/scenes/Home';
+import Category from './both/scenes/Category';
+import Product from './both/scenes/Product';
+import Notification from './both/scenes/Notification';
+import Transaction from './both/scenes/Transaction';
 import ReactHelmet from 'react-helmet';
 import ReactCookie from 'react-cookie';
 /// Collections

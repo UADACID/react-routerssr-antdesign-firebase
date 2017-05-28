@@ -95,12 +95,12 @@ const styles = {
   header: {
     borderBottom: '1px solid #e9e9e9',
     height: '44px',
-    backgroundColor: '#2574A9'
+    backgroundColor: '#446CB3'
   },
   menu: {
     borderBottom: '1px solid #e9e9e9',
     height: '44px',
     lineHeight: '44px',
-    backgroundColor:'#2574A9'
+    backgroundColor:'#446CB3'
   }
 }
