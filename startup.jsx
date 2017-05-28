@@ -1,10 +1,14 @@
 // This file will be use on the client and on the server
 import React, { Component } from 'react';
-import { IndexRoute, Route, Link } from 'react-router';
+import { IndexRoute, Route, Link, browserHistory } from 'react-router';
 import { ReactRouterSSR } from 'meteor/reactrouter:react-router-ssr';
 import App from './both/scenes/app';
 import Home from './both/scenes/home';
 import Another from './both/scenes/another';
+import Category from './both/scenes/category';
+import Product from './both/scenes/product';
+import Notification from './both/scenes/notification';
+import Transaction from './both/scenes/transaction';
 import ReactHelmet from 'react-helmet';
 import ReactCookie from 'react-cookie';
 /// Collections
@@ -12,10 +16,16 @@ Items = new Mongo.Collection('items');
 
 Meteor.startup( function() {
   AppRoutes = (
+    <Route history={browserHistory}>
+      <Route path="/login" component={Home} />
       <Route component={App}>
         <Route path="/" component={Home} />
-        <Route path="/another" component={Another} />
+        <Route path="/product" component={Product} />
+        <Route path="/category" component={Category} />
+        <Route path="/transaction" component={Transaction} />
+        <Route path="/notification" component={Notification} />
       </Route>
+    </Route>
   );
 
   ReactRouterSSR.Run(AppRoutes, {

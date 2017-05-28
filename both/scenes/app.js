@@ -56,10 +56,10 @@ export default class App extends Component {
             >
               <SubMenu key="sub1" title={<span><Icon type="user" />Main Menu</span>}>
                 <Menu.Item key="1"><Link to="/">Dashboard</Link></Menu.Item>
-                <Menu.Item key="2"><Link to="/another">produk</Link></Menu.Item>
-                <Menu.Item key="3"><Link to="/another">categori</Link></Menu.Item>
-                <Menu.Item key="4"><Link to="/another">transaksi</Link></Menu.Item>
-                <Menu.Item key="5"><Link to="/another">notifikasi</Link></Menu.Item>
+                <Menu.Item key="2"><Link to="/product">produk</Link></Menu.Item>
+                <Menu.Item key="3"><Link to="/category">categori</Link></Menu.Item>
+                <Menu.Item key="4"><Link to="/transaction">transaksi</Link></Menu.Item>
+                <Menu.Item key="5"><Link to="/notification">notifikasi</Link></Menu.Item>
               </SubMenu>
               <SubMenu key="sub2" title={<span><Icon type="laptop" />Option</span>}>
                 <Menu.Item key="5">option5</Menu.Item>
@@ -95,11 +95,12 @@ const styles = {
   header: {
     borderBottom: '1px solid #e9e9e9',
     height: '44px',
-    backgroundColor: 'rgb(64, 64, 64)'
+    backgroundColor: '#2574A9'
   },
   menu: {
     borderBottom: '1px solid #e9e9e9',
     height: '44px',
-    lineHeight: '44px'
+    lineHeight: '44px',
+    backgroundColor:'#2574A9'
   }
 }

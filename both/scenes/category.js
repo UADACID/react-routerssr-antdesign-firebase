@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import ReactTable from 'react-table';
 import fakeData from '../api/fake';
 
-export default class Another extends Component {
+export default class Category extends Component {
   constructor() {
     super();
   }
@@ -27,7 +27,7 @@ export default class Another extends Component {
 
     return (
       <div>
-        Title Go to: <Link to="/">Home</Link>
+        Category Go to: <Link to="/">Home</Link>
         <ReactTable
           data={fakeData}
           columns={columns}
