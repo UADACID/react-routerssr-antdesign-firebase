@@ -8,6 +8,9 @@ import Category from './both/scenes/Category';
 import Product from './both/scenes/Product';
 import Notification from './both/scenes/Notification';
 import Transaction from './both/scenes/Transaction';
+import AddCategory from './both/scenes/category/Add';
+import UpdateCategory from './both/scenes/category/Update';
+import ReadCategory from './both/scenes/category/Read';
 import ReactHelmet from 'react-helmet';
 import ReactCookie from 'react-cookie';
 /// Collections
@@ -21,6 +24,9 @@ Meteor.startup( function() {
         <Route path="/" component={Home} />
         <Route path="/product" component={Product} />
         <Route path="/category" component={Category} />
+          <Route exact={true} path="/category/add" component={AddCategory}/>
+          <Route exact={true} path="/category/read/:id" component={ReadCategory}/>
+          <Route exact={true} path="/category/update/:id" component={UpdateCategory}/>
         <Route path="/transaction" component={Transaction} />
         <Route path="/notification" component={Notification} />
       </Route>
