@@ -54,10 +54,10 @@ export default class App extends Component {
               defaultOpenKeys={['sub1']}
               style={{ height: '100%' }}
             >
-              <SubMenu key="sub1" title={<span><Icon type="user" />Main Menu</span>}>
+              <SubMenu key="sub1" title={<span><Icon type="user" />Menu Utama</span>}>
                 <Menu.Item key="1"><Link to="/">Dashboard</Link></Menu.Item>
                 <Menu.Item key="2"><Link to="/product">produk</Link></Menu.Item>
-                <Menu.Item key="3"><Link to="/category">categori</Link></Menu.Item>
+                <Menu.Item key="3"><Link to="/category">kategori</Link></Menu.Item>
                 <Menu.Item key="4"><Link to="/transaction">transaksi</Link></Menu.Item>
                 <Menu.Item key="5"><Link to="/notification">notifikasi</Link></Menu.Item>
               </SubMenu>

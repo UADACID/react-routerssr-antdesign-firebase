@@ -69,7 +69,7 @@ export default class Category extends Component {
   }
 
   handleRead(id){
-     browserHistory.push('/category/read');
+     browserHistory.push(`/category/read/${id}`);
   }
 
   handleAdd(){
@@ -107,7 +107,7 @@ export default class Category extends Component {
         )
       },
       {
-        Header:'Foto Categori',
+        Header:'Foto Kategori',
         accessor: 'background',
         Cell: props => (
           <div style={{textAlign: 'center'}}>
