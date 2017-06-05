@@ -59,7 +59,6 @@ export default class App extends Component {
                 <Menu.Item key="2"><Link to="/product">produk</Link></Menu.Item>
                 <Menu.Item key="3"><Link to="/category">kategori</Link></Menu.Item>
                 <Menu.Item key="4"><Link to="/transaction">transaksi</Link></Menu.Item>
-                <Menu.Item key="5"><Link to="/notification">notifikasi</Link></Menu.Item>
               </SubMenu>
               <SubMenu key="sub2" title={<span><Icon type="laptop" />Option</span>}>
                 <Menu.Item key="5">option5</Menu.Item>

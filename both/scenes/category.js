@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
 import ReactTable from 'react-table';
 import fakeData from '../api/fake';
-import { Button, Tooltip } from 'antd';
+import { Button, Tooltip, Popconfirm, Breadcrumb } from 'antd';
 import firebase from '../../lib/Firebase';
+import format from '../component/currency';
 
 export default class Category extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data : [],
+      dataLoading : true
     }
   }
 
@@ -38,7 +40,6 @@ export default class Category extends Component {
       }
     });
 
-    // let data = [];
     let self = this;
     const ref = firebase.database().ref('category');
     ref.on("value", function(snapshot) {
@@ -54,14 +55,15 @@ export default class Category extends Component {
             tempModel.push(childData);
         });
       }
-      // console.log(data);
+
+
       self.setState({
-        data:tempModel
+        data:tempModel,
+        dataLoading:false
       })
-      // self.models=tempModel;
+
     });
 
-    // alert(JSON.stringify(data));
   }
 
   handleUpdate(id){
@@ -76,16 +78,22 @@ export default class Category extends Component {
      browserHistory.push('/category/add');
   }
 
+  handleDelete(id){
+    firebase.database().ref(`category`).child(`${id}`).remove();
+  }
+
   render() {
     const columns = [
       {
         Header: 'Nama',
-        accessor: 'name' // String-based value accessors!
+        accessor: 'name',
+        filterable:{true}, // String-based value accessors!
       },
       {
         Header: 'Harga',
         accessor: 'priceStartFrom',
-        Cell: props => <span className='number'>Rp. {props.value}</span> // Custom cell components!
+        filterable:{true},
+        Cell: props => <span className='number' styles={{textAlign:'right'}}>Rp. {format.currency(props.value)}</span> // Custom cell components!
       },
       {
         // id: 'friendName', // Required because our accessor is not a string
@@ -127,22 +135,30 @@ export default class Category extends Component {
             <Button onClick={(e)=>this.handleRead(props.value)} style={{marginLeft:10, marginRight:10}} shape="circle" icon="eye" size="small" />
           </Tooltip>
           <Tooltip title="Delete">
-            <Button type="danger" shape="circle" icon="delete" size="small" />
+            <Popconfirm title="Anda yakin akan menghapus kategori ini?" onConfirm={(e)=>this.handleDelete(props.value)} onCancel={(e)=>console.log("batal")} okText="Ya" cancelText="Tidak">
+              <Button type="danger" shape="circle" icon="delete" size="small" />
+            </Popconfirm>
           </Tooltip>
           </div>
         )
       }
     ];
-    console.log(this.state.data);
+
     return (
       <div>
+        <Breadcrumb style={{ margin: '12px 0' }}>
+          <Breadcrumb.Item>Menu Utama</Breadcrumb.Item>
+          <Breadcrumb.Item>Kategori</Breadcrumb.Item>
+        </Breadcrumb>
         <h3>Informasi Kategori Produk</h3>
         <div style={{marginBottom:20, marginTop:20}}>
           <Button type="primary" onClick={()=>this.handleAdd()} icon="database">Tambah Kategori</Button>
         </div>
         <ReactTable
-          data={this.state.data}
-          columns={columns}
+          data = {this.state.data}
+          columns = {columns}
+          loading = {this.state.dataLoading}
+          defaultPageSize = {10}
         />
       </div>
     )
